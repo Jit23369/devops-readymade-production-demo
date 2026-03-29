@@ -1,0 +1,11 @@
+  deploy-production:
+    needs: build-and-test # This ensures Promotion ONLY happens if tests pass (The Second Way)
+    runs-on: ubuntu-latest
+    environment: 
+      name: Production
+      url: https://your-app-prod.azurewebsites.net
+    steps:
+      - name: Promote to Production
+        run: |
+          echo "Promoting Artifact from Staging to Production..."
+          echo "Swap successful: Staging <-> Production"
